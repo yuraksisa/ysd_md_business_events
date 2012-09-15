@@ -21,6 +21,40 @@ module BusinessEvents
     property :date, DateTime, :field => 'date'              # When the event has happened
     has n, :business_event_processes, 'BusinessEventProcess', :child_key => [:business_event_id] , :parent_key => [:id], :constraint => :destroy
    
+    # ================= Finders =================================
+    
+    #
+    # @param [Hash] options
+    #   
+    #   :limit
+    #   :offset
+    #   :count
+    #
+    # @return [Array]
+    #    
+    def self.find_all(options={})
+        
+      limit = options[:limit] || 10
+      offset = options[:offset] || 0
+      count = options[:count] || true     
+   
+      result = []
+      
+      result << BusinessEvent.all({:limit => limit, :offset => offset, :order => [:date.desc]})
+      
+      if count
+        result << BusinessEvent.count
+      end
+      
+      if result.length == 1
+        result = result.first
+      end
+      
+      result
+   
+   
+    end
+   
     # ----------------- Instance methods ------------------------
    
     #
