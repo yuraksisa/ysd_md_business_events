@@ -1,5 +1,4 @@
-require 'rubygems'
-require 'data_mapper'
+require 'data_mapper' unless defined?DataMapper
 require 'dm-constraints'
 module BusinessEvents
 
