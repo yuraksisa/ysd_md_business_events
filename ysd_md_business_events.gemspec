@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.summary = "A DattaMapper-based model for business events"
   s.homepage = "http://github.com/yuraksisa/ysd_md_business_events"
   
-  s.add_runtime_dependency "data_mapper", "1.1.0"
+  s.add_runtime_dependency "data_mapper", "1.2.0"
 end
